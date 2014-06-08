@@ -1,0 +1,8 @@
+%h1 root#index
+%p Find me in app/views/root/index.html.haml
+%ul#info
+  - info_hash.each do |title, body|
+    %li
+      %p
+        %strong="#{title}:"
+        = body
