@@ -20,6 +20,8 @@ gem 'devise'                                    # user authentication
   gem 'devise-encryptable'                      # allows us to plug pbkdf2 into devise
   gem 'pbkdf2-ruby'                             # our key derivation function for storing passwords
 
+gem 'cancancan'                                 # user authorization and permissions
+
 gem 'default_value_for'                         # shiny attribute defaulting
 gem 'attribute_normalizer'                      # shiny attribute normalizing
 gem 'paper_trail'                               # model versioning
@@ -36,6 +38,8 @@ gem 'jquery-rails'                              # jquery for the win
 gem 'paloma'                                    # controls on-demand javascript loading
 gem 'sass-rails', '~> 4.0.3'                    # use SCSS for stylesheets
 gem 'turbolinks'                                # prevents browser needing to reload the js environment on each request -- see https://github.com/rails/turbolinks
+gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
+                                                # gives us bootstrap 3
 gem 'uglifier', '>= 1.3.0'                      # js compressor
 gem 'underscore-rails'                          # underscore is awesome
 
@@ -46,7 +50,6 @@ gem 'coffee-rails', '~> 4.0.0'                  # I dislike coffeescript, but I'
 # LIBRARIES ---------------------------------------------
 
 gem 'chronic'                                   # gives us natural-language time parsing
-gem 'tzinfo'                                    # time zone data library
 
 gem 'useragent'                                 # a simple way to get at browser info
 

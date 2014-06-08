@@ -1,8 +1,13 @@
-%h1 root#index
-%p Find me in app/views/root/index.html.haml
-%ul#info
-  - info_hash.each do |title, body|
-    %li
-      %p
-        %strong="#{title}:"
-        = body
+.container-fluid
+  .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+      %h1 
+        root#index
+        %small find this in app/views/root/index.html.haml
+  .row
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+      .well
+        %dl.dl-horizontal#info
+          - info_hash.each do |title, body|
+            %dt= "#{title}:"
+            %dd= body

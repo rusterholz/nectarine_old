@@ -3,10 +3,10 @@ var RootController = Paloma.controller('Root');
 RootController.prototype.index = function(){
   // $(document).ready() is not necessary here.
   $('#info').append(
-    $('<li><p><strong>Paloma:</strong> installed (find this in app/assets/javascripts/paloma/root.js)</p></li>')
+    $('<dt>Paloma:</dt><dd>installed (find this in app/assets/javascripts/paloma/root.js)</dd>')
   ).append(
-    $('<li><p><strong>Underscore:</strong> ' + ( window._ == undefined ? 'missing!' : 'installed') + '</p></li>')
+    $('<dt>Underscore:</dt><dd>' + ( window._ == undefined ? 'missing!' : 'installed') + '</dd>')
   ).append(
-    $('<li><p><strong>Base64:</strong> ' + ( window.Base64 == undefined ? 'missing!' : 'installed') + '</p></li>')
+    $('<dt>Base64:</dt><dd>' + ( window.Base64 == undefined ? 'missing!' : 'installed') + '</dd>')
   );
 };
