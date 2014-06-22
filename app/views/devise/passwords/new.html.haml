@@ -1,0 +1,14 @@
+.row
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+    %h1 Forgot Your Password?
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6{ style: 'text-align: right; padding-top: 18px;' }
+    = render 'devise/shared/links'
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    = render partial: 'shared/form_errors', object: resource
+    .well
+      = bootstrap_form_for( resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, layout: :horizontal) do |f|
+        = f.email_field :email, autofocus: true
+        = f.form_group do
+          = submit_button do
+            Send Password Reset Email

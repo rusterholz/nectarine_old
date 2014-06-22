@@ -5,5 +5,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include Browser
+  include Parameters
+
+  rescue_from CanCan::AccessDenied do |e|
+    redirect_to root_url, alert: e.message # this can probably be improved upon later
+  end
 
 end

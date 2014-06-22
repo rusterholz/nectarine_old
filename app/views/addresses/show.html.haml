@@ -1,0 +1,19 @@
+.row
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+    %h1
+      Addresses
+      %small= nbsp( "Viewing Address #{address_id( @address )}" )
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6.text-right
+    .btn-group.btn-group-lg
+      = link_to edit_address_path( @address ), class: 'btn btn-default btn-large', style: 'margin-top: 20px; margin-bottom: 10px;' do
+        = font_awesome( 'pencil' )
+      = link_to addresses_path, class: 'btn btn-default btn-large', style: 'margin-top: 20px; margin-bottom: 10px;' do
+        = font_awesome( 'list' )
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    - columns = { addressable: 'Addressable', title: 'Title', line1: 'Line 1', line2: 'Line 2', city: 'City', state: 'State', zip: 'ZIP', country: 'Country', phone: 'Phone', latitude: 'Latitude', longitude: 'Longitude' }
+    .well
+      - columns.each do |att,title|
+        .row
+          %label.col-sm-2{ style: 'text-align: right;' }= title
+          %span.col-sm-10= send( :"address_#{att}", @address )

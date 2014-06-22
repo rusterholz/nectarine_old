@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: feb28d576cdcf3bf9fc6ff4ab206286adf56c68c
+  revision: 1d93c5a77049b3d21d17c847ad0531d7714fa229
   branch: bootstrap3
   specs:
     twitter-bootstrap-rails (3.1.1)
@@ -46,9 +46,18 @@ GEM
     arel (5.0.1.20140414130214)
     attribute_normalizer (1.1.0)
     bcrypt (3.1.7)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
+    bootstrap_form (2.1.1)
     builder (3.2.2)
     cancancan (1.8.2)
+    celluloid (0.15.2)
+      timers (~> 1.1.0)
     chronic (0.10.2)
+    coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -56,6 +65,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    connection_pool (2.0.0)
+    debug_inspector (0.0.2)
     default_value_for (3.0.0.1)
       activerecord (>= 3.2.0, < 5.0)
     devise (3.2.4)
@@ -64,8 +75,14 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-async (0.9.0)
+      devise (~> 3.2)
     devise-encryptable (0.2.0)
       devise (>= 2.1.0)
+    diff-lcs (1.2.5)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
     engineyard (2.3.3)
       engineyard-cloud-client (~> 1.0.16)
       engineyard-serverside-adapter (= 2.2.0)
@@ -84,6 +101,20 @@ GEM
     erubis (2.7.0)
     escape (0.0.4)
     execjs (2.2.0)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
+    faker (1.3.0)
+      i18n (~> 0.5)
+    foreman (0.74.0)
+      dotenv (~> 0.11.1)
+      thor (~> 0.19.1)
+    fuubar (2.0.0.rc1)
+      rspec (~> 3.0.rc1)
+      ruby-progressbar (~> 1.4)
+    geocoder (1.2.2)
     haml (4.0.5)
       tilt
     haml-rails (0.5.3)
@@ -95,20 +126,25 @@ GEM
     hike (1.2.3)
     hirb (0.7.2)
     i18n (0.6.9)
-    jbuilder (2.0.8)
+    jbuilder (2.1.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.4.2)
       addressable (~> 2.3)
+    letter_opener (1.2.0)
+      launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    minitest (5.3.4)
+    minitest (5.3.5)
     multi_json (1.10.1)
     net-ssh (2.9.1)
     orm_adapter (0.5.0)
@@ -142,8 +178,48 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    redis (3.0.7)
+    redis-actionpack (4.0.0)
+      actionpack (~> 4)
+      redis-rack (~> 1.5.0)
+      redis-store (~> 1.1.0)
+    redis-activesupport (4.0.0)
+      activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-namespace (1.4.1)
+      redis (~> 3.0.4)
+    redis-rack (1.5.0)
+      rack (~> 1.5)
+      redis-store (~> 1.1.0)
+    redis-rails (4.0.0)
+      redis-actionpack (~> 4)
+      redis-activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-store (1.1.4)
+      redis (>= 2.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rspec (3.0.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+    rspec-core (3.0.2)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.2)
+      rspec-support (~> 3.0.0)
+    rspec-rails (3.0.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.2)
+    ruby-progressbar (1.5.1)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -153,6 +229,20 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    shoulda-matchers (2.6.1)
+      activesupport (>= 3.0.0)
+    sidekiq (3.0.2)
+      celluloid (>= 0.15.2)
+      connection_pool (>= 2.0.0)
+      json
+      redis (>= 3.0.6)
+      redis-namespace (>= 1.3.1)
+    sidekiq-status (0.5.0)
+      sidekiq (>= 2.7, < 3.1)
+    sidekiq_mailer (0.0.8)
+      actionmailer (>= 3.0)
+      activesupport (>= 3.0)
+      sidekiq (>= 2.3)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -162,9 +252,11 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    state_machine (1.2.0)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    timers (1.1.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -172,7 +264,7 @@ GEM
       coffee-rails
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
-    uglifier (2.5.0)
+    uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     underscore-rails (1.6.0)
@@ -186,24 +278,42 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgres-hstore
   attribute_normalizer
+  better_errors
+  binding_of_caller
+  bootstrap_form
   cancancan
   chronic
   coffee-rails (~> 4.0.0)
   default_value_for
   devise
+  devise-async
   devise-encryptable
   engineyard
+  factory_girl_rails
+  faker
+  foreman
+  fuubar (= 2.0.0.rc1)
+  geocoder
   haml-rails
   hirb
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
+  letter_opener
   paloma
   paper_trail
   pbkdf2-ruby
   pg
   rails (~> 4.1.1)
+  redis-rails
+  rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  shoulda-matchers
+  sidekiq
+  sidekiq-status
+  sidekiq_mailer
+  state_machine
   turbolinks
   twitter-bootstrap-rails!
   uglifier (>= 1.3.0)

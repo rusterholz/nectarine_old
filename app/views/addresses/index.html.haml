@@ -1,0 +1,29 @@
+.row
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+    %h1 Addresses
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6.text-right
+    .btn-group.btn-group-lg
+      = link_to new_address_path, class: 'btn btn-default btn-large', style: 'margin-top: 20px; margin-bottom: 10px;' do
+        = font_awesome( 'plus' )
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    - columns = { addressable: 'Addressable', title: 'Title', line1: 'Line 1', line2: 'Line 2', city: 'City', state: 'State', zip: 'ZIP', country: 'Country', phone: 'Phone', latitude: 'Latitude', longitude: 'Longitude' }
+    .table-responsive
+      %table.table.table-striped.table-hover
+        %tr
+          - columns.values.each do |title|
+            %th= title
+          %th Actions
+        - @addresses.each do |address|
+          %tr
+            - columns.keys.each do |att|
+              %td{ style: 'vertical-align: middle;' }= send( :"address_#{att}", address )
+            %td{ style: 'vertical-align: middle;' }
+              .btn-group.btn-group-sm{ style: 'width: 110px;' }
+                = link_to address_path( address ), class: 'btn btn-default' do
+                  = font_awesome( 'eye', em: 1.4 )
+                = link_to edit_address_path( address ), class: 'btn btn-default' do
+                  = font_awesome( 'pencil', em: 1.4 )
+                = link_to address_path( address ), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do
+                  = font_awesome( 'trash-o', em: 1.4 )
+

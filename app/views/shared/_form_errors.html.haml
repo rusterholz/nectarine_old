@@ -1,0 +1,7 @@
+- if form_errors.errors.any?
+  .alert.alert-danger.alert-dismissable#error_explanation
+    = alert_dismiss_button
+    %h4= pluralize( form_errors.errors.count, 'error' )
+    %ul
+      - form_errors.errors.full_messages.each do |msg|
+        %li= msg

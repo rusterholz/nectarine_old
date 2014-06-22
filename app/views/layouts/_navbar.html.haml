@@ -1,0 +1,42 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top{ role: 'navigation' }
+  .container-fluid
+    .navbar-header
+      = link_to root_path, class: 'navbar-brand' do
+        = app_name
+      = button_tag type: 'button', class: 'navbar-toggle', data: { toggle: 'collapse', target: '#navbar-collapse' } do
+        %span.sr-only Toggle Navigation
+        = font_awesome( 'align-justify' )
+    .collapse.navbar-collapse#navbar-collapse
+      %ul.nav.navbar-nav.navbar-left
+        - unless current_user.nil?
+          %li.dropdown
+            %a.dropdown-toggle{ data: { toggle: 'dropdown' }, href: '#' }
+              Models
+            %ul.dropdown-menu
+              - { addresses: 'Addresses' }.each do |path,title|
+                %li
+                  = link_to title, send( "#{path}_path" )
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown
+          %a.dropdown-toggle{ data: { toggle: 'dropdown' }, href: '#' }
+            = font_awesome( 'user' )
+            = nbsp
+            = user_identification
+          %ul.dropdown-menu
+            - if current_user.nil?
+              %li
+                = link_to new_user_session_path do
+                  = font_awesome( 'key' )
+                  = nbsp
+                  Log In
+            - else
+              %li
+                = link_to edit_user_registration_path do
+                  = font_awesome( 'wrench' )
+                  = nbsp
+                  Change Account Settings
+              %li
+                = link_to destroy_user_session_path, method: :delete do
+                  = font_awesome( 'ban' )
+                  = nbsp
+                  Log Out

@@ -1,13 +1,12 @@
-.container-fluid
-  .row
-    .col-xs-12.col-sm-12.col-md-12.col-lg-12
-      %h1 
-        root#index
-        %small find this in app/views/root/index.html.haml
-  .row
-    .col-xs-12.col-sm-12.col-md-12.col-lg-12
-      .well
-        %dl.dl-horizontal#info
-          - info_hash.each do |title, body|
-            %dt= "#{title}:"
-            %dd= body
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    %h1
+      root#index
+      %small find this in app/views/root/index.html.haml
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    .well
+      %dl.dl-horizontal#info
+        - info_hash.each do |title, body|
+          %dt= "#{title}:"
+          %dd= body

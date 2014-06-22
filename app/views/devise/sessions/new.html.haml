@@ -1,0 +1,19 @@
+.row
+  .col-xs-3.col-sm-3.col-md-3.col-lg-3
+    %h1 Log In
+  .col-xs-9.col-sm-9.col-md-9.col-lg-9{ style: 'text-align: right; padding-top: 18px;' }
+    = render 'devise/shared/links'
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    .well
+      = bootstrap_form_for( resource, as: resource_name, url: session_path( resource_name ), layout: :horizontal ) do |f|
+        = f.email_field :email, autofocus: true
+        = f.password_field :password, autocomplete: "off"
+        - if devise_mapping.rememberable?
+          = f.form_group :remember_me, label: { text: 'Remember Me' } do
+            = f.check_box :remember_me
+        = f.form_group do
+          = submit_button do
+            = font_awesome( 'key' )
+            = nbsp
+            Log In

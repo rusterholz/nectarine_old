@@ -1,0 +1,36 @@
+.row
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+    %h1 Change Account Settings
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6{ style: 'text-align: right; padding-top: 18px;' }
+    = render "devise/shared/links"
+.row
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+    %h3 Change Email / Password
+    = render partial: 'shared/form_errors', object: resource
+    .well
+      - @url = registration_path( resource_name )
+      = bootstrap_form_for( resource, as: resource_name, url: @url, layout: :horizontal, label_col: 'col-sm-3', control_col: 'col-sm-9', html: { method: :put } ) do |f|
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          = f.email_field :email, autofocus: true, help: "Currently waiting on confirmation for: #{resource.unconfirmed_email}"
+        - else
+          = f.email_field :email, autofocus: true
+        = f.password_field :current_password, label: 'Current Password', autocomplete: "off"
+        = f.password_field :password, label: 'New Password', autocomplete: "off", help: "(leave blank if you don't want to change it)"
+        = f.password_field :password_confirmation, label: 'Confirm New Password', autocomplete: "off"
+        = f.form_group do
+          = submit_button do
+            = font_awesome( 'save' )
+            = nbsp
+            Save Changes
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+    %h3 Delete My Account
+    .well
+      %p
+        %strong WARNING:
+        This action cannot be undone! Only click this button if you are sure you want to delete your account.
+      = button_to( registration_path(resource_name), class: 'btn btn-block btn-danger', data: { confirm: "Are you sure you want to delete your account? This action cannot be undone!" }, method: :delete ) do
+        = font_awesome( 'trash-o' )
+        = nbsp
+        Delete Account
+
+

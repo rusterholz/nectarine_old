@@ -98,15 +98,28 @@ Devise.setup do |config|
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
   # using other encryptors, it sets how many times you want the password re-encrypted.
   #
-  # Limiting the stretches to just one in testing will increase the performance of
+  # We use PBKDF2 instead of bcrypt, but the effect is basically the same. The key
+  # will be stretched e^n times, where n is the setting below. Note that this makes
+  # this parameter very sensitive: a value of 15 may cause logins to take 60s or more.
+  #
+  # Limiting the stretches to just 1 in testing will increase the performance of
   # your test suite dramatically. However, it is STRONGLY RECOMMENDED to not use
-  # a value less than 10 in other environments. Note that, for bcrypt (the default
-  # encryptor), the cost increases exponentially with the number of stretches (e.g.
-  # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
-  config.stretches = Rails.env.test? ? 1 : 10.8 # note that changing this will immediately break all passwords in the database.
+  # a value less than 10 in other environments!
+  #
+  # WARNING: Please note that changing this will IMMEDIATELY BREAK all existing passwords in the database!
+  #
+  config.stretches = case Rails.env.to_sym
+    when :test then 1
+    when :development then 2.5
+    else 10.75
+  end
 
-  # Setup a pepper to generate the encrypted password.
-  config.pepper = '71b87b32666717779579bf07ac91617f2dafc19bdd43bdb911f0504f368a7aade36be580090a74d94599adb2fca26ca2f05c64837561d7b91284a63a28834bf0' # note that changing this will immediately break all passwords in the database.
+  # Set up a pepper to use when generate encrypted passwords. Just as each user
+  # has a unique salt, each application should have a unique pepper.
+  #
+  # WARNING: Please note that changing this will IMMEDIATELY BREAK all existing passwords in the database!
+  #
+  config.pepper = 'cbh7MmZnF3eVeb8HrJFhfy2vwZvdQ725EfBQTzaKeq3ja+WACQp02UWZrbL8omyi8Fxkg3Vh17kShKY6KINL8A=='
 
 
   # ==> Configuration for :confirmable
@@ -287,21 +300,28 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 end
 
+# configure asynchronous emails
+Devise::Async.setup do |config|
+
+  # Use sidekiq to send emails in the background
+  config.backend = :sidekiq
+
+  # Disable background sending for test purposes
+  config.enabled = !Rails.env.test?
+
+end
+
 # A simple glue class to wrap an instance of PBKDF2 in a Devise encryptor.
 require 'pbkdf2'
-module Devise
-  module Encryptable
-    module Encryptors
-      class Pbkdf2Encryptor < Base
-        def self.digest( password, stretches, salt, pepper )
-          ::PBKDF2.new(
-            password:       password,
-            salt:           "#{salt}#{pepper}",
-            iterations:     (Math::E ** stretches).round,
-            hash_function:  OpenSSL::Digest::SHA512
-          ).hex_string
-        end
-      end
+module Devise::Encryptable::Encryptors
+  class Pbkdf2Encryptor < Base
+    def self.digest( password, stretches, salt, pepper )
+      ::PBKDF2.new(
+        password:       password,
+        salt:           "#{salt}#{pepper}",
+        iterations:     (Math::E ** stretches).round,
+        hash_function:  OpenSSL::Digest::SHA512
+      ).hex_string
     end
   end
 end

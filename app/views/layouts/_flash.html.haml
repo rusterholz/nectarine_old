@@ -1,0 +1,10 @@
+- if flash_key_alert_classes.keys.map{ |k| flash[ k ].present? }.any?
+  .row#flash-messages
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+      - flash_key_alert_classes.each do |key,klass|
+        - if flash[ key ].present?
+          - [ flash[ key ] ].flatten.each_with_index do |msg,index|
+            %div{ class: "alert #{klass} alert-dismissable", id: "flash-#{key}-#{index}" }
+              = alert_dismiss_button
+              %h4= "#{key.to_s.titleize}!"
+              = msg

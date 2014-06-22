@@ -1,0 +1,18 @@
+# Configuration for Sidekiq
+#
+# Options here can still be overridden by command-line args.
+#    sidekiq -C path/to/config.yml
+#
+# Note: THIS FILE WILL ONLY APPLY FOR DEVELOPMENT AND TEST.
+# Deployment recipes override this file, so if you make changes
+# here and you need to see them in production or staging, you
+# need to go change the recipe instead.
+#
+---
+:verbose: false
+:pidfile: ./tmp/pids/sidekiq.pid
+:concurrency: 25
+:queues:
+  - [nectarine, 8]
+  - [default, 5]
+  - [mailer, 2]

@@ -1,0 +1,20 @@
+= render partial: 'shared/form_errors', object: @address
+.well
+  = bootstrap_form_for( @address, layout: :horizontal ) do |f|
+    = f.text_field :addressable_type
+    = f.number_field :addressable_id
+    = f.text_field :title
+    = f.text_field :line1, label: 'Line 1'
+    = f.text_field :line2, label: 'Line 2'
+    = f.text_field :city
+    = f.text_field :state
+    = f.text_field :zip, label: 'ZIP'
+    = f.text_field :country
+    = f.text_field :phone
+    = f.text_field :latitude
+    = f.text_field :longitude
+    = f.form_group do
+      = submit_button do
+        = font_awesome( 'save' )
+        = nbsp
+        Save
