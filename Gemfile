@@ -50,12 +50,12 @@ gem 'kaminari'                                  # dead-simple pagination for act
 
 gem 'jquery-rails'                              # jquery for the win
 gem 'turbolinks'                                # prevents browser needing to reload the js environment on each request -- see https://github.com/rails/turbolinks
-gem 'underscore-rails'                          # underscore is awesome
 
-gem 'paloma'                                    # controls on-demand javascript loading
+gem 'rails-backbone'                            # backbone core (includes underscore)
 
-gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3'
-                                                # bootstrap is shiny
+gem 'paloma'                                    # controls javascript loading per controller and action
+
+gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3' # bootstrap is shiny
   gem 'bootstrap_form'                          # formbuilder with native bootstrap support
 
 gem 'haml-rails'                                # haml is better than erb any day

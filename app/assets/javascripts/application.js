@@ -17,4 +17,8 @@
 //= require underscore
 //= require paloma
 //= require_tree ./shared
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone/nectarine
 //= require_tree ./paloma
