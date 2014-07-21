@@ -1,0 +1,31 @@
+= backbone_collection_tag contacts: @contacts
+.row
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6
+    %h1 Contacts
+  .col-xs-6.col-sm-6.col-md-6.col-lg-6.text-right
+    .btn-group.btn-group-lg
+      = link_to new_contact_path, class: 'btn btn-default btn-large', style: 'margin-top: 20px; margin-bottom: 10px;' do
+        = font_awesome( 'plus' )
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    .table-responsive
+      %table.table.table-striped.table-hover
+        %tr
+          - contact_columns.values.each do |title|
+            %th= title
+          %th Actions
+        - @contacts.each do |contact|
+          %tr
+            - contact_columns.keys.each do |att|
+              %td{ style: 'vertical-align: middle;' }= send( :"contact_#{att}", contact )
+            %td{ style: 'vertical-align: middle;' }
+              .btn-group.btn-group-sm{ style: 'width: 110px;' }
+                = link_to contact_path( contact ), class: 'btn btn-default' do
+                  = font_awesome( 'eye', em: 1.4 )
+                = link_to edit_contact_path( contact ), class: 'btn btn-default' do
+                  = font_awesome( 'pencil', em: 1.4 )
+                = link_to contact_path( contact ), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' do
+                  = font_awesome( 'trash-o', em: 1.4 )
+.row
+  .col-xs-12.col-sm-12.col-md-12.col-lg-12
+    .well#contacts

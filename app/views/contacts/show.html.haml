@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @contact.first_name
+%p
+  %b Last name:
+  = @contact.last_name
+%p
+  %b Birthdate:
+  = @contact.birthdate
+%p
+  %b Age:
+  = @contact.age
+%p
+  %b Gender:
+  = @contact.gender
+%p
+  %b Ethnicity:
+  = @contact.ethnicity
+%p
+  %b Description:
+  = @contact.description
+%p
+  %b Contactable type:
+  = @contact.contactable_type
+%p
+  %b Contactable:
+  = @contact.contactable_id
+
+= link_to 'Edit', edit_contact_path(@contact)
+\|
+= link_to 'Back', contacts_path

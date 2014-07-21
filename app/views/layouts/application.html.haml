@@ -3,12 +3,12 @@
   %head
     %title Nectarine
     = stylesheet_link_tag( 'application', media: 'all', 'data-turbolinks-track' => true )
-    = google_font_stylesheet_tag 'Droid Sans', styles: [ 400, 700 ]
+    - # = google_font_stylesheet_tag 'Droid Sans', styles: [ 400, 700 ]
     = javascript_include_tag( 'application', 'data-turbolinks-track' => true )
     = csrf_meta_tags
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1' }
   %body
-    = render partial: 'layouts/navbar'
-    .container-fluid
-      = render partial: 'layouts/flash'
+    = render partial: 'shared/navbar'
+    .container-fluid{ data: { 'no-turbolink' => true } }
+      = render partial: 'shared/flash'
       = yield

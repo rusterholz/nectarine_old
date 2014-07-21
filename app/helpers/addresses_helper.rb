@@ -1,5 +1,22 @@
 module AddressesHelper
 
+  def address_columns
+    {
+      id:           'ID',
+      addressable:  'Addressable',
+      title:        'Title',
+      line1:        'Line 1',
+      line2:        'Line 2',
+      city:         'City',
+      state:        'State',
+      zip:          'ZIP',
+      country:      'Country',
+      phone:        'Phone',
+      latitude:     'Latitude',
+      longitude:    'Longitude'
+    }
+  end
+
   def address_id( address )
     address.id.try( :to_s ) || missing_field
   end

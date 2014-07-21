@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, alert: e.message # this can probably be improved upon later
   end
 
+  # prevent Paloma from firing on JSON requests
+  before_action :no_paloma_on_json
+  def no_paloma_on_json
+    js false if request.format.to_s.split('/').last == 'json'
+  end
+
 end

@@ -2,7 +2,6 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -26,14 +25,23 @@ module Nectarine
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # use redis as our cache provider
-    config.cache_store = :redis_store, 'redis://localhost:6379', { expires_in: 30.minutes }
+    # use memcached as our cache provider
+    config.cache_store = :mem_cache_store
 
     # configure factorygirl to generate factory files of the form "<model>_factory.rb"
     config generators do |g|
       g.factory_girl suffix: 'factory'
     end
 
+  end
+
+  class << self
+    def process_name
+      ActiveSupport::StringInquirer.new($0.split('/').last)
+    end
+    def websocket_process?
+      !!( process_name.rake? && /websocket_rails/ =~ ARGV.join(' ') )
+    end
   end
 
 end

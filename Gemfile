@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # CORE --------------------------------------------------
 
 gem 'rails', '~> 4.1.1'                         # ...
-
+gem 'puma'
 
 # SECURITY & MIDDLEWARE ---------------------------------
 
@@ -22,6 +22,7 @@ gem 'pg'                                        # postgres is rather nice
   gem 'activerecord-postgres-hstore'            # but this adds native serialized hashes
 
 gem 'redis-rails'                               # plug redis in as our cache provider
+gem 'dalli'                                     # memcached also available
 
 gem 'sidekiq'                                   # kickass background processing
   gem 'sidekiq-status'                          # lets us communicate with running background processes
@@ -51,7 +52,8 @@ gem 'kaminari'                                  # dead-simple pagination for act
 gem 'jquery-rails'                              # jquery for the win
 gem 'turbolinks'                                # prevents browser needing to reload the js environment on each request -- see https://github.com/rails/turbolinks
 
-gem 'rails-backbone'                            # backbone core (includes underscore)
+gem 'rails-backbone', git: 'git://github.com/codebrew/backbone-rails.git', branch: 'master' # backbone core (includes underscore)
+gem 'websocket-rails'                           # persistent client connections in channels
 
 gem 'paloma'                                    # controls javascript loading per controller and action
 
@@ -59,12 +61,12 @@ gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap
   gem 'bootstrap_form'                          # formbuilder with native bootstrap support
 
 gem 'haml-rails'                                # haml is better than erb any day
+  gem 'haml_coffee_assets'                      # allows use of haml/coffee templates for backbone
 gem 'jbuilder', '~> 2.0'                        # simple json api builder -- see: https://github.com/rails/jbuilder
 gem 'sass-rails', '~> 4.0.3'                    # use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'                      # js compressor
 
-
-gem 'coffee-rails', '~> 4.0.0'                  # I dislike coffeescript, but I'm leaving it on for default compatibility
+gem 'coffee-rails', '>= 4.0.0'                  # I dislike coffeescript, but I'm leaving it on for default compatibility
 
 
 

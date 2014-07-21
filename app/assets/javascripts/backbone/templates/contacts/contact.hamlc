@@ -1,0 +1,16 @@
+%td{ style: "vertical-align: middle;" }= @id
+%td{ style: "vertical-align: middle;" }= @first_name
+%td{ style: "vertical-align: middle;" }= @last_name
+%td{ style: "vertical-align: middle;" }= @birthdate
+%td{ style: "vertical-align: middle;" }= @age
+%td{ style: "vertical-align: middle;" }= @gender
+%td{ style: "vertical-align: middle;" }= @ethnicity
+%td{ style: "vertical-align: middle;" }= @description
+%td{ style: "vertical-align: middle;" }
+  .btn-group.btn-group-sm{ style: "width: 110px;" }
+    %a.btn.btn-default{ href: "#/" + @id }
+      %i.fa.fa-eye{ style: "font-size: 1.4em;" }
+    %a.btn.btn-default{ href: "#/@id/edit" }
+      %i.fa.fa-pencil{ style: "font-size: 1.4em;" }
+    %a.btn.btn-default{ href: "#/@id/destroy" }
+      %i.fa.fa-trash-o{ style: "font-size: 1.4em;" }

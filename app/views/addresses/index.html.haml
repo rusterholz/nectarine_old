@@ -1,3 +1,4 @@
+= backbone_collection_tag addresses: @addresses
 .row
   .col-xs-6.col-sm-6.col-md-6.col-lg-6
     %h1 Addresses
@@ -7,16 +8,15 @@
         = font_awesome( 'plus' )
 .row
   .col-xs-12.col-sm-12.col-md-12.col-lg-12
-    - columns = { addressable: 'Addressable', title: 'Title', line1: 'Line 1', line2: 'Line 2', city: 'City', state: 'State', zip: 'ZIP', country: 'Country', phone: 'Phone', latitude: 'Latitude', longitude: 'Longitude' }
     .table-responsive
       %table.table.table-striped.table-hover
         %tr
-          - columns.values.each do |title|
+          - address_columns.values.each do |title|
             %th= title
           %th Actions
         - @addresses.each do |address|
           %tr
-            - columns.keys.each do |att|
+            - address_columns.keys.each do |att|
               %td{ style: 'vertical-align: middle;' }= send( :"address_#{att}", address )
             %td{ style: 'vertical-align: middle;' }
               .btn-group.btn-group-sm{ style: 'width: 110px;' }

@@ -10,15 +10,21 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// It's a good idea to require the shared directory before backbone or paloma, so that you can use
+// libraries or custom code in shared when writing code for either of them.
+//
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
+//= require hamlcoffee
 //= require underscore
 //= require paloma
+//= require websocket_rails/main
 //= require_tree ./shared
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/nectarine
 //= require_tree ./paloma
+

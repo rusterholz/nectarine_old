@@ -1,7 +1,7 @@
 %nav.navbar.navbar-inverse.navbar-fixed-top{ role: 'navigation' }
   .container-fluid
     .navbar-header
-      = link_to root_path, class: 'navbar-brand' do
+      = link_to root_path, class: 'navbar-brand', id: 'root-link' do
         = app_name
       = button_tag type: 'button', class: 'navbar-toggle', data: { toggle: 'collapse', target: '#navbar-collapse' } do
         %span.sr-only Toggle Navigation
@@ -13,7 +13,7 @@
             %a.dropdown-toggle{ data: { toggle: 'dropdown' }, href: '#' }
               Models
             %ul.dropdown-menu
-              - { addresses: 'Addresses' }.each do |path,title|
+              - { addresses: 'Addresses', contacts: 'Contacts' }.each do |path,title|
                 %li
                   = link_to title, send( "#{path}_path" )
       %ul.nav.navbar-nav.navbar-right

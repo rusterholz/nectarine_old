@@ -7,10 +7,13 @@ class Address < ActiveRecord::Base
 
   # concerns # ---------------------------------------------------------------------------------------------------
 
+  include Backbone
   include Geocoded
 
 
   # attributes # -------------------------------------------------------------------------------------------------
+
+  backbone_attributes :id, :title, :line1, :line2, :city, :state, :zip, :country, :phone, :latitude, :longitude, :created_at, :updated_at
 
 
   # defaults # ---------------------------------------------------------------------------------------------------

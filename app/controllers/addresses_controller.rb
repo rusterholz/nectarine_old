@@ -62,11 +62,4 @@ class AddressesController < TrustedController
     end
   end
 
-  private
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  # def address_params
-  #   params.require(:address).permit( *WHITELIST_PARAMS )
-  # end
-
 end

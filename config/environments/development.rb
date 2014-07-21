@@ -40,6 +40,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # supposedly this is needed for websockets
+  config.middleware.delete Rack::Lock
 end
 
 # this shouldn't be necessary once we're done using the VM

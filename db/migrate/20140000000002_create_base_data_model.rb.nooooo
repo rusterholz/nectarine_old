@@ -1,0 +1,168 @@
+class CreateBaseDataModel < ActiveRecord::Migration
+  
+  def change
+
+    create_table :contacts do |t|
+
+      t.string  :first_name
+      t.string  :last_name
+      t.date    :birthdate
+      t.integer :age
+      t.string  :gender
+      t.string  :ethnicity
+      t.text    :description
+      t.string  :contactable_type
+      t.integer :contactable_id
+
+      t.timestamps
+
+    end
+
+    add_index :contacts, [ :contactable_type, :contactable_id ], name: 'index_contacts_on_contactable'
+
+    create_table :cons do |t|
+
+      t.string  :name
+      t.string  :description
+      t.string  :website
+
+      t.timestamps
+
+    end
+
+    create_table :con_years do |t|
+
+      t.string   :name
+      t.integer  :con_id
+      t.datetime :start_at
+      t.datetime :end_at
+
+      t.timestamps
+
+    end
+
+    add_index :con_years, :con_id, name: 'index_con_years_on_con_id'
+
+    create_table :buildings do |t|
+
+      t.string  :name
+      t.integer :con_year_id
+
+      t.timestamps
+
+    end
+
+    add_index :buildings, :con_year_id, name: 'index_buildings_on_con_year_id'
+
+    create_table :events do |t|
+
+      t.string   :name
+      t.string   :description
+      t.datetime :at
+      t.integer  :building_id
+
+      t.timestamps
+
+    end
+
+    add_index :events, :building_id, name: 'index_events_on_building_id'
+
+    create_table :stations do |t|
+
+      t.string  :code
+      t.string  :description
+      t.integer :building_id
+
+      t.timestamps
+
+    end
+
+    add_index :stations, :building_id, name: 'index_stations_on_building_id'
+
+    create_table :shifts do |t|
+
+      t.string   :name
+      t.datetime :start_at
+      t.datetime :end_at
+      t.integer  :con_year_id
+      t.integer  :building_id
+
+      t.timestamps
+
+    end
+
+    add_index :shifts, :con_year_id, name: 'index_shifts_on_con_year_id'
+    add_index :shifts, :building_id, name: 'index_shifts_on_building_id'
+
+    create_table :ops do |t|
+
+      t.integer :user_id
+      t.string  :callsign
+      t.string  :status
+      t.integer :con_year_id
+      t.integer :team_id
+
+      t.timestamps
+
+    end
+
+    add_index :ops, :user_id,                   name: 'index_ops_on_user_id'
+    add_index :ops, :con_year_id,               name: 'index_ops_on_con_year_id'
+    add_index :ops, [ :user_id, :con_year_id ], name: 'index_ops_on_user_id_con_year_id', unique: true
+    add_index :ops, :team_id,                   name: 'index_ops_on_team_id'
+
+    create_table :teams do |t|
+
+      t.string  :name
+      t.integer :shift_id
+      t.string  :status
+      t.integer :all_ops, array: true, default: '{}'
+
+      t.timestamps
+
+    end
+
+    add_index :teams, :shift_id,  name: 'index_teams_on_shift_id'
+
+    create_table :details do |t|
+
+      t.integer :team_id
+      t.string  :code
+      t.string  :status
+      t.string  :description
+      t.integer :station_id
+
+      t.timestamps
+
+    end
+
+    add_index :details, :team_id,    name: 'index_details_on_team_id'
+    add_index :details, :station_id, name: 'index_details_on_station_id'
+
+    create_table :incidents do |t|
+
+      t.string  :type
+      t.string  :status
+      t.text    :narrative
+
+      t.timestamps
+
+    end
+
+    add_index :incidents, :type, name: 'index_incidents_on_type'
+
+    create_table :incident_teams
+
+      t.integer :incident_id
+      t.integer :team_id
+
+      t.timestamps
+
+    end
+
+    add_index :incident_teams, [ :incident_id, :team_id ], name: 'index_incident_teams_on_incident_id_team_id'
+    
+    add_column :users, :last_callsign, :string
+
+  end
+end
