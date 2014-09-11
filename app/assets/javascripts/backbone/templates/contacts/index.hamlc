@@ -2,7 +2,7 @@
   %table.table.table-striped.table-hover#contacts-index
     %thead
       %tr
-        - for title in [ "ID", "First", "Last", "DOB", "Age", "Gender", "Ethnicity", "Description" ]
+        - for att,title of @columns
           %th= title
         %th Actions
     %tbody

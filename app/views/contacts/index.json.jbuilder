@@ -1,4 +1,4 @@
 json.array!(@contacts) do |contact|
-  json.extract! contact, :id, :first_name, :last_name, :birthdate, :age, :gender, :ethnicity, :description, :contactable_type, :contactable_id
+  json.extract! *([@contact] + Contact.medulla_attributes)
   json.url contact_url(contact, format: :json)
 end

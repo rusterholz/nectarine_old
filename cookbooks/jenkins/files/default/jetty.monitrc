@@ -1,5 +1,0 @@
-check process jetty
-with pidfile /var/run/jetty.pid
-  start program = "/etc/init.d/jetty start" as uid deploy
-  stop program = "/etc/init.d/jetty stop" as uid deploy
-  group jetty

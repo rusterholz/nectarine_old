@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # CORE --------------------------------------------------
@@ -51,14 +51,17 @@ gem 'kaminari'                                  # dead-simple pagination for act
 
 gem 'jquery-rails'                              # jquery for the win
 gem 'turbolinks'                                # prevents browser needing to reload the js environment on each request -- see https://github.com/rails/turbolinks
-
 gem 'rails-backbone', git: 'git://github.com/codebrew/backbone-rails.git', branch: 'master' # backbone core (includes underscore)
-gem 'websocket-rails'                           # persistent client connections in channels
 
 gem 'paloma'                                    # controls javascript loading per controller and action
 
+gem 'websocket-rails'                           # persistent client connections in channels
+
 gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git', branch: 'bootstrap3' # bootstrap is shiny
   gem 'bootstrap_form'                          # formbuilder with native bootstrap support
+  gem 'bootstrap3-datetimepicker-rails'         # elegant dtp
+    gem 'momentjs-rails'                        # dependency
+
 
 gem 'haml-rails'                                # haml is better than erb any day
   gem 'haml_coffee_assets'                      # allows use of haml/coffee templates for backbone

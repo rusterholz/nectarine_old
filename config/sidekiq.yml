@@ -13,6 +13,7 @@
 :pidfile: ./tmp/pids/sidekiq.pid
 :concurrency: 25
 :queues:
+  - [medulla, 16]
   - [nectarine, 8]
-  - [default, 5]
+  - [default, 4]
   - [mailer, 2]

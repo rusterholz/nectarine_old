@@ -4,11 +4,14 @@ class Nectarine.Views.Contacts.ContactView extends Backbone.View
   template: JST["backbone/templates/contacts/contact"]
 
   initialize: (options) ->
-    console.log( 'initializing index view, el is:' )
+    console.log( 'initializing contact view, el is:' )
     console.log @$el
     @model = options.model
-    # @model.on('change', @render)
-    # console.log( 'bound!' )
+
+    rdr = _.bind( @render, @ )
+    @listenTo( @model, 'change', rdr )
+    rem = _.bind( @remove, @ )
+    @listenTo( @model, 'remove', rem )
 
   events:
     "click .destroy" : "destroy"
@@ -17,11 +20,10 @@ class Nectarine.Views.Contacts.ContactView extends Backbone.View
 
   destroy: () ->
     @model.destroy()
-    this.remove()
-
-    return false
+    @remove()
+    false
 
   render: ->
     console.log( 'rendering contact!' )
-    @$el.html( @template( @model.toJSON() ) )
-    return this
+    @$el.html( @template( @model ) )
+    @

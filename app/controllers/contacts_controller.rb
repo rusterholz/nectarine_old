@@ -55,6 +55,7 @@ class ContactsController < TrustedController
   # DELETE /contacts/1
   # DELETE /contacts/1.json
   def destroy
+    puts " --------- #{params}"
     @contact.destroy
     respond_to do |format|
       format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }

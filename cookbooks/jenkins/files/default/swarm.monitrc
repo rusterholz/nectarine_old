@@ -1,4 +1,0 @@
-check process swarm
-with pidfile /var/run/swarm.pid
-	start program = "/etc/init.d/swarm start" as uid deploy
-	stop program = "/etc/init.d/swarm stop" as uid deploy

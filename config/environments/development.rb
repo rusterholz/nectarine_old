@@ -46,4 +46,4 @@ Rails.application.configure do
 end
 
 # this shouldn't be necessary once we're done using the VM
-BetterErrors::Middleware.allow_ip!( '10.10.0.100' )
+# BetterErrors::Middleware.allow_ip!( '10.10.0.100' )

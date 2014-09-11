@@ -16,8 +16,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require moment
 //= require turbolinks
 //= require hamlcoffee
+//= require bootstrap-datetimepicker
 //= require underscore
 //= require paloma
 //= require websocket_rails/main

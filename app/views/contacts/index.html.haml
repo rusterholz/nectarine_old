@@ -1,12 +1,12 @@
-= backbone_collection_tag contacts: @contacts
+= medulla_collection_tag contacts: @contacts
 .row
   .col-xs-6.col-sm-6.col-md-6.col-lg-6
     %h1 Contacts
   .col-xs-6.col-sm-6.col-md-6.col-lg-6.text-right
     .btn-group.btn-group-lg
-      = link_to new_contact_path, class: 'btn btn-default btn-large', style: 'margin-top: 20px; margin-bottom: 10px;' do
+      = link_to '#/new', class: 'btn btn-default btn-large', style: 'margin-top: 20px; margin-bottom: 10px;' do
         = font_awesome( 'plus' )
-.row
+.row#contacts-classic
   .col-xs-12.col-sm-12.col-md-12.col-lg-12
     .table-responsive
       %table.table.table-striped.table-hover

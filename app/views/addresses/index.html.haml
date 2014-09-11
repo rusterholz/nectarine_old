@@ -1,4 +1,4 @@
-= backbone_collection_tag addresses: @addresses
+= medulla_collection_tag addresses: @addresses
 .row
   .col-xs-6.col-sm-6.col-md-6.col-lg-6
     %h1 Addresses
@@ -6,7 +6,7 @@
     .btn-group.btn-group-lg
       = link_to new_address_path, class: 'btn btn-default btn-large', style: 'margin-top: 20px; margin-bottom: 10px;' do
         = font_awesome( 'plus' )
-.row
+.row#addresses-classic
   .col-xs-12.col-sm-12.col-md-12.col-lg-12
     .table-responsive
       %table.table.table-striped.table-hover

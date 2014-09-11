@@ -28,26 +28,23 @@ module Nectarine
 
 end
 
-unless Nectarine.websocket_process?
+require 'sidekiq'
+require 'sidekiq-status'
 
-  require 'sidekiq'
-  require 'sidekiq-status'
-
-  Sidekiq.configure_client do |config|
-    config.redis = Nectarine::SIDEKIQ_REDIS_CONFIG[ Rails.env.to_sym ]
-    config.client_middleware do |chain|
-      chain.add Sidekiq::Status::ClientMiddleware
-    end
+Sidekiq.configure_client do |config|
+  config.redis = Nectarine::SIDEKIQ_REDIS_CONFIG[ Rails.env.to_sym ]
+  config.client_middleware do |chain|
+    chain.add Sidekiq::Status::ClientMiddleware
   end
+end
 
-  Sidekiq.configure_server do |config|
-    config.redis = Nectarine::SIDEKIQ_REDIS_CONFIG[ Rails.env.to_sym ]
-    config.server_middleware do |chain|
-      chain.add Sidekiq::Status::ServerMiddleware, expiration: Nectarine::SIDEKIQ_EXPIRATION[ Rails.env.to_sym ]
-    end
-    config.client_middleware do |chain|
-      chain.add Sidekiq::Status::ClientMiddleware
-    end
+Sidekiq.configure_server do |config|
+  config.redis = Nectarine::SIDEKIQ_REDIS_CONFIG[ Rails.env.to_sym ]
+  config.server_middleware do |chain|
+    chain.add Sidekiq::Status::ServerMiddleware, expiration: Nectarine::SIDEKIQ_EXPIRATION[ Rails.env.to_sym ]
+  end
+  config.client_middleware do |chain|
+    chain.add Sidekiq::Status::ClientMiddleware
   end
 end
 

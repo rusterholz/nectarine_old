@@ -9,26 +9,26 @@ class Nectarine.Routers.ContactsRouter extends Backbone.Router
     "index"    : "index"
     ":id/edit" : "edit"
     ":id"      : "show"
-    ".*"        : "index"
+    ".*"       : "index"
 
   newContact: ->
-    @view = new Nectarine.Views.Contacts.NewView(collection: @contacts)
-    $("#contacts").html(@view.render().el)
+    console.log( 'routed to newContact' )
+    @view = new Nectarine.Views.Contacts.NewView( collection: @contacts )
+    $("#contacts").html( @view.render().el )
+    window.attachPickers()
 
   index: ->
-    @view = new Nectarine.Views.Contacts.IndexView(collection: @contacts)
-    console.log( 'executing index route, view.render.el gives:' )
-    console.log( vre = @view.render().el )
-    $("#contacts").html( vre )
+    console.log( 'routed to index' )
+    @view = new Nectarine.Views.Contacts.IndexView( collection: @contacts )
+    $("#contacts").html( @view.render().el )
 
   show: (id) ->
-    contact = @contacts.get(id)
-
-    @view = new Nectarine.Views.Contacts.ShowView(model: contact)
-    $("#contacts").html(@view.render().el)
+    console.log( 'routed to show' )
+    @view = new Nectarine.Views.Contacts.ShowView( model: @contacts.get( id ) )
+    $("#contacts").html( @view.render().el )
 
   edit: (id) ->
-    contact = @contacts.get(id)
-
-    @view = new Nectarine.Views.Contacts.EditView(model: contact)
-    $("#contacts").html(@view.render().el)
+    console.log( 'routed to edit' )
+    @view = new Nectarine.Views.Contacts.EditView( model: @contacts.get( id ) )
+    $("#contacts").html( @view.render().el )
+    window.attachPickers()

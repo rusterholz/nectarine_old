@@ -38,7 +38,7 @@ PaperTrail.serializer = PaperTrail::Serializers::JSON
 
 # set up faker
 require 'faker'
-Faker::Config.locale = 'en-us'
+Faker::Config.locale = 'en-US'
 
 # set up geocoder
 require 'geocoder'
