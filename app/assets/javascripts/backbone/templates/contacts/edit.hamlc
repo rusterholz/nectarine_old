@@ -1,0 +1,22 @@
+%form.form-horizontal#edit-contact{ name: "contact", data: { id: @attributes.id } }
+  %div{style: "display:none"}
+    %input{name: "utf8", type: "hidden", value: "✓"}
+  - for att,type of @fields
+    .form-group
+      %label.control-label.col-sm-2{for: ("address_" + att)}= @columns[att]
+      .col-sm-10
+        - if type == 'date'
+          %input.form-control.has-datepicker{ id: ("address_" + att), name: att, type: "text", value: @attributes[att] }
+        - else if type == 'time'
+          %input.form-control.has-timepicker{ id: ("address_" + att), name: att, type: "text", value: @attributes[att] }
+        - else if type == 'datetime'
+          %input.form-control.has-datetimepicker{ id: ("address_" + att), name: att, type: "text", value: @attributes[att] }
+        - else
+          %input.form-control{ id: ("address_" + att), name: att, type: type, value: @attributes[att] }
+  .form-group
+    %label.control-label.col-sm-2
+    .col-sm-10
+      %button.btn.btn-primary#submit-form{name: "button", type: "button"}
+        %i.fa.fa-save
+        Save
+%a{ href: '#/index' } Back

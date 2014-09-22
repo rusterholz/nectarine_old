@@ -1,0 +1,11 @@
+- for att,title of @columns
+  .row
+    %label.col-sm-2{ style: 'text-align: right;' }= title
+    %span.col-sm-10
+      - if @['render_'+att] != undefined
+        - console.log( "using render_" + att )
+        = @['render_'+att]()
+      - else
+        - console.log( "rendering raw attribute " + att )
+        = @attributes[att]
+%a{ href: '#/index' } Back
